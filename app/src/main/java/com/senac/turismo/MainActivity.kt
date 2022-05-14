@@ -54,7 +54,25 @@ fun MyApp(){
 }
 
 @Composable
-fun Navigation(navController: NavHostController, ){
+fun LoginNavigation(navController: NavHostController) {
+    NavHost(navController, startDestination = ScreenManager.Login.route) {
+        composable(ScreenManager.Login.route) { LoginCompose(navController) }
+        composable(ScreenManager.ForgotPassword.route) { ForgotPasswordCompose(navController) }
+        composable(ScreenManager.Register.route) { RegisterCompose(navController) }
+        SystemNavigation(navController)
+    }
+}
+
+fun NavGraphBuilder.SystemNavigation(navController: NavHostController) {
+    navigation(startDestination = ScreenManager.Home.route, route = ScreenManager.SystemNavigation.route) {
+        composable(ScreenManager.Home.route) { HomeCompose(navController) }
+        composable(ScreenManager.About.route) { AboutCompose(navController) }
+        composable(ScreenManager.Profile.route) { ProfileCompose(navController) }
+    }
+}
+
+@Composable
+fun NavigationBar(navController: NavController){
     val screenList = listOf(
         ScreenManager.Home,
         ScreenManager.Profile,
@@ -79,12 +97,28 @@ fun Navigation(navController: NavHostController, ){
                 }
             }
         }
-    ) { innerPadding ->
-        NavHost(navController, startDestination = ScreenManager.Home.route, Modifier.padding(innerPadding)) {
-            composable(ScreenManager.Home.route) { HomeCompose(navController) }
-            composable(ScreenManager.About.route) { AboutCompose(navController) }
-            profileGraph(navController)
-        }
+    ) {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    TurismoTheme {
+        MyApp();
     }
 }
 
@@ -105,22 +139,5 @@ fun NavGraphBuilder.profileGraph(navController: NavHostController) {
             // val other = it.arguments?.getFloat("other")
             ProfileFormCompose(navController, id)
         }
-    }
-}
-
-@Composable
-fun LoginNavigation(navController: NavHostController) {
-    NavHost(navController, startDestination = ScreenManager.Login.route) {
-        composable(ScreenManager.Login.route) { LoginCompose(navController) }
-        composable(ScreenManager.ForgotPassword.route) { ForgotPasswordCompose(navController) }
-        composable(ScreenManager.Register.route) { RegisterCompose(navController) }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    TurismoTheme {
-        MyApp();
     }
 }

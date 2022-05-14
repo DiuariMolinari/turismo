@@ -25,4 +25,5 @@ fun HomeCompose(navController: NavController) {
     Column() {
         Text(text="Home");
     }
+    NavigationBar(navController)
 }

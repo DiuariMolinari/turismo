@@ -39,4 +39,5 @@ fun ProfileCompose(navController: NavController) {
             Text(text = "Voltar")
         }
     }
+    NavigationBar(navController)
 }

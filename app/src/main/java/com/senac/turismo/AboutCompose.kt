@@ -25,4 +25,5 @@ fun AboutCompose(navController: NavController) {
     Column() {
         Text(text="About");
     }
+    NavigationBar(navController)
 }

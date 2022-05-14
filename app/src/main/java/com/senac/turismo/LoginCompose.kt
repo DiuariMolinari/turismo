@@ -17,6 +17,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.senac.turismo.componentes.PasswordField
 //declara state by delagation
 import com.senac.turismo.ui.theme.TurismoTheme
@@ -39,10 +44,8 @@ fun LoginCompose(navController: NavController) {
 
         OutlinedButton(onClick =  {
             if (pessoa.usuario.equals("admin") && pessoa.senha.equals("admin")) {
-                Toast.makeText(context, "Login ok", Toast.LENGTH_SHORT).show();
-                navController.navigate(ScreenManager.Home.route) {
-
-                }
+                Toast.makeText(context, "Login ok", Toast.LENGTH_SHORT).show()
+                navController.navigate(ScreenManager.Home.route)
             }
             else {
                 Toast.makeText(context, "Login inválido", Toast.LENGTH_LONG).show();
@@ -62,7 +65,7 @@ fun LoginCompose(navController: NavController) {
             }
 
             OutlinedButton(onClick =  {
-                navController.navigate(ScreenManager.Home.route) {
+                navController.navigate(ScreenManager.ForgotPassword.route) {
 
                 }
             }) {

@@ -15,7 +15,11 @@ sealed class ScreenManager(val route: String,
     object Profile : ScreenManager("profile", "Profile", Icons.Filled.Build)
     object About : ScreenManager("about", "About", Icons.Filled.Face)
 
+    object SystemNavigation : ScreenManager("systemNavigation", "System Navigation", Icons.Filled.Password)
+
     object Login : ScreenManager("login", "Login", Icons.Filled.Face)
     object Register : ScreenManager("register", "Register", Icons.Filled.Face)
     object ForgotPassword : ScreenManager("forgotPassword", "Forgot Password", Icons.Filled.Password)
+
+
 }
