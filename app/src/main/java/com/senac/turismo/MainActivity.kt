@@ -59,48 +59,13 @@ fun LoginNavigation(navController: NavHostController) {
         composable(ScreenManager.Login.route) { LoginCompose(navController) }
         composable(ScreenManager.ForgotPassword.route) { ForgotPasswordCompose(navController) }
         composable(ScreenManager.Register.route) { RegisterCompose(navController) }
-        SystemNavigation(navController)
+
+        composable(ScreenManager.Home.route) { HomeCompose() }
     }
 }
 
-fun NavGraphBuilder.SystemNavigation(navController: NavHostController) {
-    navigation(startDestination = ScreenManager.Home.route, route = ScreenManager.SystemNavigation.route) {
-        composable(ScreenManager.Home.route) { HomeCompose(navController) }
-        composable(ScreenManager.About.route) { AboutCompose(navController) }
-        composable(ScreenManager.Profile.route) { ProfileCompose(navController) }
-    }
-}
 
-@Composable
-fun NavigationBar(navController: NavController){
-    val screenList = listOf(
-        ScreenManager.Home,
-        ScreenManager.Profile,
-        ScreenManager.About
-    )
-    Scaffold(
-        bottomBar = {
-            BottomNavigation {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
-                val currentDestination = navBackStackEntry?.destination
-                screenList.forEach { screen ->
-                    BottomNavigationItem(
-                        icon = { Icon(screen.icon, contentDescription = null) },
-                        label = { Text(screen.name) },
-                        selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
-                        onClick = {
-                            navController.navigate(screen.route) {
 
-                            }
-                        }
-                    )
-                }
-            }
-        }
-    ) {
-
-    }
-}
 
 
 

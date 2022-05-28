@@ -13,7 +13,7 @@ sealed class ScreenManager(val route: String,
 ) {
     object Home : ScreenManager("home", "Home", Icons.Filled.Home)
     object Profile : ScreenManager("profile", "Profile", Icons.Filled.Build)
-    object About : ScreenManager("about", "About", Icons.Filled.Face)
+    object Pessoa : ScreenManager("pessoa", "Pessoa", Icons.Filled.Face)
 
     object SystemNavigation : ScreenManager("systemNavigation", "System Navigation", Icons.Filled.Password)
 

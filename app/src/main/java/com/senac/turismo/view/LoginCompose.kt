@@ -1,4 +1,5 @@
 package com.senac.turismo
+import android.app.Application
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -26,12 +27,16 @@ import com.senac.turismo.componentes.PasswordField
 //declara state by delagation
 import com.senac.turismo.ui.theme.TurismoTheme
 import com.senac.turismo.viewModel.PessoaViewModel
+import com.senac.turismo.viewModel.PessoaViewModelFactory
 import java.net.PasswordAuthentication
 
 @Composable
 fun LoginCompose(navController: NavController) {
-    val pessoa: PessoaViewModel = viewModel()
     val context = LocalContext.current;
+    val app = context.applicationContext as Application;
+    val pessoa: PessoaViewModel = viewModel(
+        factory = PessoaViewModelFactory(app)
+    )
 
     Column(verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
         horizontalAlignment= Alignment.CenterHorizontally) {

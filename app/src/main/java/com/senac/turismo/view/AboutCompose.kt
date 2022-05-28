@@ -1,4 +1,5 @@
 package com.senac.turismo
+
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -16,14 +17,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-//declara state by delagation
 import com.senac.turismo.ui.theme.TurismoTheme
 import java.net.PasswordAuthentication
-
 @Composable
-fun HomeCompose(navController: NavController) {
+
+fun AboutCompose(navController: NavController) {
     Column() {
-        Text(text="Home");
+        Text(text="About");
     }
-    NavigationBar(navController)
 }
