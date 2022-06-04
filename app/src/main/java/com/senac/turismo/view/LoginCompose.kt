@@ -48,13 +48,25 @@ fun LoginCompose(navController: NavController) {
         PasswordField(value = pessoa.senha, onChange = { pessoa.senha = it});
 
         OutlinedButton(onClick =  {
-            if (pessoa.usuario.equals("admin") && pessoa.senha.equals("admin")) {
+
+            pessoa.login(
+                onSuccess = {
+                    Toast.makeText(context, "Login ok", Toast.LENGTH_SHORT).show()
+                    navController.navigate(ScreenManager.Home.route)
+                },
+                onFail = {
+                    Toast.makeText(context, "Login inválido", Toast.LENGTH_LONG).show();
+                }
+            )
+
+/*            var pessoaByUsername = pessoa.findByUsername(pessoa.usuario)?.value;
+            if (pessoaByUsername != null && pessoaByUsername.senha.equals(pessoa.senha)) {
                 Toast.makeText(context, "Login ok", Toast.LENGTH_SHORT).show()
                 navController.navigate(ScreenManager.Home.route)
             }
             else {
                 Toast.makeText(context, "Login inválido", Toast.LENGTH_LONG).show();
-            }
+            }*/
         }) {
             Text(text = "Login")
         }

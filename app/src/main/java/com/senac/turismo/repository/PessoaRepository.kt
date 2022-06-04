@@ -27,6 +27,8 @@ class PessoaRepository(app: Application) {
 
     suspend fun findById(id: Int) = pessoaDao.findById(id)
 
+    suspend fun findByUsername(username: String) = pessoaDao.findByUsername(username)
+
     suspend fun delete(pessoa: Pessoa) = pessoaDao.delete(pessoa)
 
 

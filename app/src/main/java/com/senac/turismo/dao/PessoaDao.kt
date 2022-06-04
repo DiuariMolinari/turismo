@@ -21,4 +21,7 @@ interface PessoaDao {
     @Query("select * from Pessoa c where c.id = :id")
     suspend fun findById(id: Int): Pessoa?
 
+    @Query("select * from Pessoa c where c.usuario = :username")
+    suspend fun findByUsername(username: String): Pessoa?
+
 }

@@ -3,10 +3,16 @@ package com.senac.turismo.viewModel
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.senac.turismo.model.Pessoa
 import com.senac.turismo.repository.PessoaRepository
+import io.reactivex.internal.operators.single.SingleDoOnSuccess
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -23,4 +29,17 @@ class PessoaViewModel(private val repository: PessoaRepository) : ViewModel() {
             repository.save(pessoa)
         }
     }
+
+    fun login (onSuccess: () -> Unit, onFail: () -> Unit)  {
+        viewModelScope.launch {
+            val user = repository.findByUsername(usuario)
+            if (user == null || !user.senha.equals(senha)) {
+                onFail()
+            }
+            else {
+                onSuccess()
+            }
+        }
+    }
+
 }
