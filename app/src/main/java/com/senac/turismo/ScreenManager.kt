@@ -1,10 +1,7 @@
 package com.senac.turismo
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Password
+import androidx.compose.material.icons.filled.*
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class ScreenManager(val route: String,
@@ -12,8 +9,10 @@ sealed class ScreenManager(val route: String,
                            val icon: ImageVector
 ) {
     object Home : ScreenManager("home", "Home", Icons.Filled.Home)
-    object Profile : ScreenManager("profile", "Profile", Icons.Filled.Build)
+    object About : ScreenManager("about", "About", Icons.Filled.AccountBox)
     object Pessoa : ScreenManager("pessoa", "Pessoa", Icons.Filled.Face)
+    object Travel : ScreenManager("travel", "Travel", Icons.Filled.TravelExplore)
+    object FormTravel : ScreenManager("formTravel", "Form Travel", Icons.Filled.DynamicForm)
 
     object SystemNavigation : ScreenManager("systemNavigation", "System Navigation", Icons.Filled.Password)
 

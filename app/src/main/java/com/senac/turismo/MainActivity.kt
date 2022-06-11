@@ -89,7 +89,7 @@ fun DefaultPreview() {
 
 fun NavGraphBuilder.profileGraph(navController: NavHostController) {
     navigation(startDestination = "principal", route = "profile") {
-        composable("principal") { ProfileCompose(navController) }
+        composable("principal") { AboutCompose(navController) }
         composable("form/{profileId}",
             arguments = listOf(
                 navArgument("profileId") {

@@ -1,5 +1,4 @@
 package com.senac.turismo
-
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -17,26 +16,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 //declara state by delagation
 import com.senac.turismo.ui.theme.TurismoTheme
 import java.net.PasswordAuthentication
 
 @Composable
-fun ProfileCompose(navController: NavController) {
+fun TravelCompose(navController: NavController) {
     Column() {
-        Text(text = "Profile")
-        Button(onClick = { navController.navigate("form/1") }) {
-            Text(text = "Form 1")
-        }
-        Button(onClick = { navController.navigate("form/2") }) {
-            Text(text = "Form 2")
-        }
-        Button(onClick = { navController.navigate("form/3") }) {
-            Text(text = "Form 3")
-        }
-
-        Button(onClick = { navController.navigateUp() }) {
-            Text(text = "Voltar")
-        }
+        Text(text="Travel List");
     }
 }

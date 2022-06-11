@@ -35,8 +35,8 @@ fun NavigationBar(){
     val navController = rememberNavController()
     val screenList = listOf(
         ScreenManager.Home,
-        ScreenManager.Profile,
-        ScreenManager.Pessoa
+        ScreenManager.Travel,
+        ScreenManager.About
     )
     Scaffold(
         bottomBar = {
@@ -60,8 +60,11 @@ fun NavigationBar(){
     ) {
         NavHost(navController, startDestination = ScreenManager.Home.route) {
             composable(ScreenManager.Home.route) { Principal() }
-            composable(ScreenManager.Pessoa.route) { FormPessoaCompose(navController) }
-            composable(ScreenManager.Profile.route) { ProfileCompose(navController) }
+            composable(ScreenManager.Travel.route) { TravelCompose(navController) }
+            composable(ScreenManager.About.route) { AboutCompose(navController) }
+            composable(ScreenManager.FormTravel.route) { FormTravelCompose(navController) }
+
+
         }
     }
 }

@@ -58,15 +58,6 @@ fun LoginCompose(navController: NavController) {
                     Toast.makeText(context, "Login inválido", Toast.LENGTH_LONG).show();
                 }
             )
-
-/*            var pessoaByUsername = pessoa.findByUsername(pessoa.usuario)?.value;
-            if (pessoaByUsername != null && pessoaByUsername.senha.equals(pessoa.senha)) {
-                Toast.makeText(context, "Login ok", Toast.LENGTH_SHORT).show()
-                navController.navigate(ScreenManager.Home.route)
-            }
-            else {
-                Toast.makeText(context, "Login inválido", Toast.LENGTH_LONG).show();
-            }*/
         }) {
             Text(text = "Login")
         }
