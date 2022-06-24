@@ -35,7 +35,7 @@ abstract class AppDatabaseConnection: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     AppDatabaseConnection::class.java,
-                    "db2"
+                    "db3"
                 ).build()
                 connection = instance
                 return instance

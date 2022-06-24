@@ -24,7 +24,7 @@ class ViagemViewModel(private val repository: ViagemRepository) : ViewModel() {
     var tipo by mutableStateOf(TipoViagem.LAZER)
     var dataChegada by mutableStateOf(LocalDate.now())
     var dataPartida by mutableStateOf(LocalDate.now())
-    var orcamento by mutableStateOf("")
+    var orcamento by mutableStateOf(0F)
     var pessoaId by mutableStateOf(-1)
 
     fun save() {

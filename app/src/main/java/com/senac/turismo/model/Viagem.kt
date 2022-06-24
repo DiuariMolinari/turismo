@@ -19,7 +19,7 @@ data class Viagem (
     val tipo: TipoViagem?,
     val dataChegada: LocalDate,
     val dataPartida: LocalDate,
-    val orcamento: String,
+    val orcamento: Float,
     val pessoaId: Int,
 
     ) {
