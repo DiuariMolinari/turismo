@@ -17,10 +17,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 //declara state by delagation
 import com.senac.turismo.ui.theme.TurismoTheme
 import java.net.PasswordAuthentication
@@ -60,7 +62,18 @@ fun NavigationBar(){
     ) {
         NavHost(navController, startDestination = ScreenManager.Home.route) {
             composable(ScreenManager.Home.route) { Principal() }
-            composable(ScreenManager.Travel.route) { TravelCompose(navController) }
+
+            composable("form/{Id}",
+                arguments = listOf(
+                    navArgument("Id") {
+                        type = NavType.IntType
+                    }
+                )
+            ) {
+                val id = it.arguments?.getInt ("Id")
+                TravelCompose(navController, id);
+            }
+
             composable(ScreenManager.About.route) { AboutCompose(navController) }
             composable(ScreenManager.FormTravel.route) { FormTravelCompose(navController) }
 

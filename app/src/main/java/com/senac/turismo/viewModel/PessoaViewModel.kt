@@ -30,14 +30,14 @@ class PessoaViewModel(private val repository: PessoaRepository) : ViewModel() {
         }
     }
 
-    fun login (onSuccess: () -> Unit, onFail: () -> Unit)  {
+    fun login (onSuccess: (id: Int) -> Unit, onFail: () -> Unit) {
         viewModelScope.launch {
             val user = repository.findByUsername(usuario)
             if (user == null || !user.senha.equals(senha)) {
                 onFail()
             }
             else {
-                onSuccess()
+                onSuccess(user.id)
             }
         }
     }
