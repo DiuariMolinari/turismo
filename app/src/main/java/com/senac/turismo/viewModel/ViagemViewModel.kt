@@ -33,4 +33,10 @@ class ViagemViewModel(private val repository: ViagemRepository) : ViewModel() {
             repository.save(viagem)
         }
     }
+
+    fun findAll(idPessoa: Int,onSuccess: (viagens: List<Viagem>) -> Unit){
+        viewModelScope.launch {
+            onSuccess(repository.findAll(idPessoa))
+        }
+    }
 }

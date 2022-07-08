@@ -52,7 +52,7 @@ fun LoginCompose(navController: NavController) {
             pessoa.login(
                 onSuccess = {
                     Toast.makeText(context, "Login ok", Toast.LENGTH_SHORT).show()
-                    navController.navigate("${ScreenManager.Home.route}/${it}" )
+                    navController.navigate("home/${it}" )
                 },
                 onFail = {
                     Toast.makeText(context, "Login inválido", Toast.LENGTH_LONG).show();

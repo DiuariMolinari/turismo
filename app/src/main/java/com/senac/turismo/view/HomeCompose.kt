@@ -28,12 +28,12 @@ import com.senac.turismo.ui.theme.TurismoTheme
 import java.net.PasswordAuthentication
 
 @Composable
-fun HomeCompose() {
-    NavigationBar()
+fun HomeCompose(id: Int?) {
+    NavigationBar(id)
 }
 
 @Composable
-fun NavigationBar(){
+fun NavigationBar(id: Int?){
     val navController = rememberNavController()
     val screenList = listOf(
         ScreenManager.Home,
@@ -60,24 +60,22 @@ fun NavigationBar(){
             }
         }
     ) {
-        NavHost(navController, startDestination = ScreenManager.Home.route) {
-            composable(ScreenManager.Home.route) { Principal() }
+        NavHost(navController, startDestination = "home") {
+            composable("home") { Principal() }
 
-            composable("form/{Id}",
+            composable("formTravel/{Id}",
                 arguments = listOf(
                     navArgument("Id") {
                         type = NavType.IntType
                     }
                 )
             ) {
-                val id = it.arguments?.getInt ("Id")
-                TravelCompose(navController, id);
+                val idf = it.arguments?.getInt ("Id") ?: id
+                FormTravelCompose(navController, idf);
             }
 
             composable(ScreenManager.About.route) { AboutCompose(navController) }
-            composable(ScreenManager.FormTravel.route) { FormTravelCompose(navController) }
-
-
+            composable(ScreenManager.Travel.route) { TravelCompose(navController, id) }
         }
     }
 }

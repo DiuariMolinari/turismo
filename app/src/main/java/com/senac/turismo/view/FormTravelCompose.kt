@@ -33,7 +33,7 @@ import java.net.PasswordAuthentication
 import java.time.LocalDate
 
 @Composable
-fun FormTravelCompose(navController: NavController, id: Int) {
+fun FormTravelCompose(navController: NavController, id: Int?) {
     val context = LocalContext.current;
     val app = context.applicationContext as Application;
     val viagem: ViagemViewModel = viewModel(
@@ -102,6 +102,7 @@ fun FormTravelCompose(navController: NavController, id: Int) {
             Button(modifier = Modifier.padding(start = 20.dp) ,onClick = {
                 if (isValidFields())
                 {
+                   viagem.pessoaId = id?: 0;
                     viagem.save()
                     Toast.makeText(context, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show()
                     clearFields();

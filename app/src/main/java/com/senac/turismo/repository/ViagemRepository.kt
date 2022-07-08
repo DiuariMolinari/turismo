@@ -25,7 +25,7 @@ class ViagemRepository(app: Application) {
         }
     }
 
-    suspend fun findAll(): List<Viagem> = viagemDao.findAll()
+    suspend fun findAll(idPessoa : Int): List<Viagem> = viagemDao.findAll(idPessoa)
 
     suspend fun findById(id: Int) = viagemDao.findById(id)
 

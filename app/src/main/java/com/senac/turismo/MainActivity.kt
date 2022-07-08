@@ -60,7 +60,16 @@ fun LoginNavigation(navController: NavHostController) {
         composable(ScreenManager.ForgotPassword.route) { ForgotPasswordCompose(navController) }
         composable(ScreenManager.Register.route) { RegisterCompose(navController) }
 
-        composable(ScreenManager.Home.route) { HomeCompose() }
+        composable(ScreenManager.Home.route,
+            arguments = listOf(
+                navArgument("Id") {
+                    type = NavType.IntType
+                }
+            ))
+        {
+            val id = it.arguments?.getInt ("Id")
+            HomeCompose(id)
+        }
     }
 }
 

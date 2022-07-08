@@ -1,4 +1,5 @@
 package com.senac.turismo
+import android.app.Application
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -14,31 +15,49 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.HdrPlus
 import androidx.compose.material.icons.filled.PlusOne
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.senac.turismo.model.TipoViagem
 import com.senac.turismo.model.Viagem
 import java.text.DecimalFormat
 import java.time.LocalDate
 import androidx.navigation.compose.NavHost
+import com.senac.turismo.viewModel.PessoaViewModel
+import com.senac.turismo.viewModel.PessoaViewModelFactory
+import com.senac.turismo.viewModel.ViagemViewModel
+import com.senac.turismo.viewModel.ViagemViewModelFactory
 
 @Composable
 fun TravelCompose(navController: NavController, id: Int? ) {
-    val float: Float = 200.0F;
-    val viagens = listOf(
-        Viagem("Destino lazer", TipoViagem.LAZER, LocalDate.now(), LocalDate.now(), float,1),
-        Viagem("Destino negócio", TipoViagem.NEGOCIO, LocalDate.now(), LocalDate.now(), float,1),
+    val context = LocalContext.current;
+    val app = context.applicationContext as Application;
+    val viagem: ViagemViewModel = viewModel(
+        factory = ViagemViewModelFactory(app)
     )
+
+
+    var initValue : List<Viagem> = listOf();
+    var allViagens by remember {
+        mutableStateOf(initValue)
+    }
+
+    viagem.findAll(id?: 0,
+        onSuccess = {
+            allViagens = it;
+        }
+    )
+
     LazyColumn(){
-        items(items = viagens) {
-            p -> ViagemView(p, navController)
+
+        items(items = allViagens) {
+                p -> ViagemView(p, navController)
         }
     }
 

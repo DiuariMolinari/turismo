@@ -8,11 +8,11 @@ sealed class ScreenManager(val route: String,
                           val name: String,
                            val icon: ImageVector
 ) {
-    object Home : ScreenManager("home", "Home", Icons.Filled.Home)
+    object Home : ScreenManager("home/{Id}", "Home", Icons.Filled.Home)
     object About : ScreenManager("about", "About", Icons.Filled.AccountBox)
     object Pessoa : ScreenManager("pessoa", "Pessoa", Icons.Filled.Face)
-    object Travel : ScreenManager("travel/{Id}", "Travel", Icons.Filled.TravelExplore)
-    object FormTravel : ScreenManager("formTravel/{Id}", "Form Travel", Icons.Filled.DynamicForm)
+    object Travel : ScreenManager("travel", "Travel", Icons.Filled.TravelExplore)
+    object FormTravel : ScreenManager("formTravel", "Form Travel", Icons.Filled.DynamicForm)
 
     object SystemNavigation : ScreenManager("systemNavigation", "System Navigation", Icons.Filled.Password)
 
